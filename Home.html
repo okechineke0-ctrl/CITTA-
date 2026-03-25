@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home - CITTA</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#0f172a;
+color:#fff;
+}
+
+/* NAVBAR */
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 25px;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(12px);
+position:sticky;
+top:0;
+z-index:1000;
+}
+
+.logo{
+font-size:22px;
+font-weight:600;
+}
+
+.logo span{
+color:#38bdf8;
+}
+
+.nav-links{
+display:flex;
+gap:20px;
+}
+
+.nav-links a{
+color:#fff;
+text-decoration:none;
+font-size:14px;
+transition:0.3s;
+}
+
+.nav-links a:hover{
+color:#38bdf8;
+}
+
+/* MOBILE MENU */
+.menu-toggle{
+display:none;
+font-size:22px;
+cursor:pointer;
+}
+
+@media(max-width:768px){
+.nav-links{
+position:absolute;
+top:70px;
+right:0;
+background:#1e293b;
+flex-direction:column;
+width:200px;
+padding:15px;
+display:none;
+}
+
+.nav-links.active{
+display:flex;
+}
+
+.menu-toggle{
+display:block;
+}
+}
+
+/* HERO */
+.hero{
+height:90vh;
+background:url("https://images.unsplash.com/photo-1498050108023-c5249f4df085") center/cover no-repeat;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+position:relative;
+}
+
+.hero::after{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+max-width:700px;
+padding:20px;
+}
+
+.hero h1{
+font-size:44px;
+margin-bottom:15px;
+}
+
+.hero p{
+opacity:0.85;
+margin-bottom:25px;
+}
+
+/* BUTTON */
+.btn{
+padding:12px 20px;
+background:#38bdf8;
+border:none;
+border-radius:8px;
+color:#fff;
+cursor:pointer;
+transition:0.3s;
+}
+
+.btn:hover{
+background:#0ea5e9;
+}
+
+/* SECTIONS */
+.section{
+padding:70px 25px;
+text-align:center;
+}
+
+.section h2{
+margin-bottom:15px;
+font-size:30px;
+}
+
+.section p.desc{
+max-width:700px;
+margin:auto;
+opacity:0.8;
+margin-bottom:40px;
+}
+
+/* FEATURES */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:20px;
+}
+
+.card{
+background:rgba(255,255,255,0.05);
+padding:25px;
+border-radius:12px;
+backdrop-filter:blur(10px);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-6px);
+}
+
+.card i{
+font-size:26px;
+margin-bottom:10px;
+color:#38bdf8;
+}
+
+/* ABOUT */
+.about{
+display:flex;
+flex-wrap:wrap;
+gap:30px;
+align-items:center;
+justify-content:center;
+}
+
+.about img{
+width:100%;
+max-width:420px;
+border-radius:12px;
+}
+
+.about-text{
+max-width:500px;
+text-align:left;
+}
+
+/* CONTACT */
+.contact{
+display:flex;
+flex-direction:column;
+gap:10px;
+max-width:400px;
+margin:auto;
+}
+
+.contact input,
+.contact textarea{
+padding:12px;
+border:none;
+border-radius:8px;
+outline:none;
+background:rgba(255,255,255,0.08);
+color:#fff;
+}
+
+.contact button{
+margin-top:10px;
+}
+
+/* CTA */
+.cta{
+background:#38bdf8;
+color:#000;
+padding:50px 25px;
+text-align:center;
+border-radius:12px;
+margin:40px 25px;
+}
+
+/* FOOTER */
+footer{
+text-align:center;
+padding:20px;
+opacity:0.7;
+}
+</style>
+</head>
+
+<body onload="checkAuth()">
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="logo">CI<span>TTA</span></div>
+
+    <div class="menu-toggle" onclick="toggleMenu()">
+        <i class="fa fa-bars"></i>
+    </div>
+
+    <div class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#about">About Us</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+        <a href="#" onclick="logout()">Logout</a>
+    </div>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+    <div class="hero-content">
+        <h1>Welcome, <span id="user"></span> 🚀</h1>
+        <p>
+            CITTA is a modern technology platform focused on innovation, education, and digital transformation.
+            We help developers and creators build scalable and impactful solutions.
+        </p>
+        <button class="btn" onclick="goToPage()">Get Started</button>
+    </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section" id="services">
+    <h2>Our Services</h2>
+    <p class="desc">We provide high-quality digital solutions designed to help businesses grow and scale efficiently.</p>
+
+    <div class="grid">
+
+        <div class="card">
+            <i class="fa fa-code"></i>
+            <h3>Web Development</h3>
+            <p>Modern, responsive, and scalable web applications built with clean architecture.</p>
+        </div>
+
+        <div class="card">
+            <i class="fa fa-shield"></i>
+            <h3>Security</h3>
+            <p>Advanced authentication systems and secure data handling practices.</p>
+        </div>
+
+        <div class="card">
+            <i class="fa fa-bolt"></i>
+            <h3>Performance</h3>
+            <p>Optimized systems ensuring fast loading speed and smooth experience.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+    <h2>About Us</h2>
+    <p class="desc">Learn more about CITTA and our mission to empower innovation.</p>
+
+    <div class="about">
+        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c" alt="team">
+
+        <div class="about-text">
+            <p>
+                CITTA is dedicated to building a strong digital ecosystem where developers,
+                students, and innovators can collaborate and grow. We focus on delivering
+                modern tools, learning resources, and scalable solutions that support real-world impact.
+            </p>
+            <br>
+            <p>
+                Our vision is to become a leading tech-driven platform that fosters creativity,
+                innovation, and excellence across all levels of technology development.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+    <h2>Start Your Journey Today</h2>
+    <p>Join CITTA and be part of the future of technology.</p>
+    <button class="btn" onclick="goToPage()">Join Now</button>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+    <h2>Contact Us</h2>
+    <p class="desc">Have questions? Send us a message.</p>
+
+    <div class="contact">
+        <input type="text" placeholder="Your Name">
+        <input type="email" placeholder="Your Email">
+        <textarea rows="4" placeholder="Your Message"></textarea>
+        <button class="btn">Send Message</button>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 CITTA. All rights reserved.</p>
+</footer>
+
+<script src="script.js"></script>
+
+<script>
+const user = JSON.parse(localStorage.getItem("loggedInUser"));
+document.getElementById("user").innerText = user ? user.name : "";
+
+// MOBILE MENU
+function toggleMenu(){
+    document.getElementById("navLinks").classList.toggle("active");
+}
+</script>
+
+</body>
+</html>

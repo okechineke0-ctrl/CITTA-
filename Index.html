@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login - CITTA</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+background:linear-gradient(135deg,#0f172a,#1e293b);
+padding:15px;
+}
+
+/* CARD */
+.container{
+width:100%;
+max-width:420px;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(12px);
+padding:25px;
+border-radius:16px;
+color:#fff;
+}
+
+/* LOGO */
+.logo{
+text-align:center;
+font-size:26px;
+margin-bottom:10px;
+}
+.logo span{color:#38bdf8;}
+
+h2{
+text-align:center;
+margin-bottom:20px;
+}
+
+/* INPUT */
+.input-group{
+position:relative;
+margin-bottom:15px;
+}
+
+.input-group i.left-icon{
+position:absolute;
+left:12px;
+top:50%;
+transform:translateY(-50%);
+color:#94a3b8;
+}
+
+.input-group input{
+width:100%;
+padding:12px 45px 12px 40px;
+border:none;
+border-radius:8px;
+background:rgba(255,255,255,0.08);
+color:#fff;
+outline:none;
+}
+
+/* EYE ICON INSIDE INPUT */
+.eye-icon{
+position:absolute;
+right:12px;
+top:50%;
+transform:translateY(-50%);
+cursor:pointer;
+color:#94a3b8;
+display:flex;
+align-items:center;
+}
+
+/* BUTTON */
+.btn{
+width:100%;
+padding:12px;
+border:none;
+border-radius:8px;
+background:#38bdf8;
+color:#fff;
+cursor:pointer;
+}
+
+.btn:hover{
+background:#0ea5e9;
+}
+
+/* FOOTER */
+.footer{
+text-align:center;
+margin-top:12px;
+}
+
+.footer a{
+color:#38bdf8;
+text-decoration:none;
+}
+
+/* RESPONSIVE */
+@media(max-width:480px){
+.container{
+padding:20px;
+}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="logo">CI<span>TTA</span></div>
+    <h2>Login</h2>
+
+    <form onsubmit="loginUser(event)">
+
+        <!-- EMAIL -->
+        <div class="input-group">
+            <i class="fa fa-envelope left-icon"></i>
+            <input id="email" type="email" placeholder="Email" required>
+        </div>
+
+        <!-- PASSWORD -->
+        <div class="input-group">
+            <i class="fa fa-lock left-icon"></i>
+            <input id="password" type="password" placeholder="Password" required>
+
+            <!-- EYE ICON -->
+            <span class="eye-icon" onclick="togglePassword()">
+                <i id="eyeIcon" class="fa fa-eye"></i>
+            </span>
+        </div>
+
+        <button class="btn">Login</button>
+    </form>
+
+    <p id="message" style="text-align:center;margin-top:10px;"></p>
+
+    <div class="footer">
+        <p>Don't have an account? <a href="register.html">Register</a></p>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
