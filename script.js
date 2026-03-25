@@ -81,5 +81,5 @@ window.location.href="login.html";
 }
 
 function goToPage(){
-    window.location.href = "Course.html";
+    window.location.href = "program.html";
 }
